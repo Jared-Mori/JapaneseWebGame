@@ -2,6 +2,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     let data = await loadData("data.txt");
     let questions = splitCounters(data);
 
+    // Print the split data to the console for verification
+    console.log("Split Questions Data:", questions);
+
     // Get the answer input field
     const answerInput = document.getElementById("EngToJa");
 
@@ -44,7 +47,7 @@ function parseData(text) {
         const parts = line.split(" - ");
         if (parts.length === 3) {
             return {
-                count: parts[0],
+                count: parseInt(parts[0], 10),
                 descriptions: parts[1].split(","),
                 answer: parts[2]
             };
@@ -57,16 +60,18 @@ function parseData(text) {
 
 function splitCounters(data) {
     const counterMap = new Map();
-    const tempArray = [];
+    let tempArray = [];
 
-    data.array.forEach(question => {
-        if(question.count === 0) {
+    data.forEach(question => {
+        if (question.count === 0) {
             counterMap.set(question.descriptions[0], tempArray);
             tempArray = [];
         } else {
             tempArray.push(question);
         }
     });
+
+    return counterMap;
 }
 
 function loadQuestion(counterMap) {
