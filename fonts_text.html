@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanakana Font Test</title>
+    
+    <!-- Load Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Roboto:wght@400;700&family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .font-sample {
+            margin: 20px 0;
+            padding: 10px;
+            font-size: 24px;
+            border-bottom: 2px solid #ccc;
+        }
+        .noto-sans { font-family: 'Noto Sans JP', sans-serif; }
+        .roboto { font-family: 'Roboto', sans-serif; }
+        .rounded { font-family: 'M PLUS Rounded 1c', sans-serif; }
+        .default { font-family: Arial, sans-serif; }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/wanakana@4.0.2/wanakana.min.js"></script>
+</head>
+<body>
+
+    <h1>Wanakana Font Test</h1>
+
+    <div class="font-sample noto-sans">Noto Sans JP: <span class="wanakana-text"></span></div>
+    <div class="font-sample roboto">Roboto: <span class="wanakana-text"></span></div>
+    <div class="font-sample rounded">M PLUS Rounded: <span class="wanakana-text"></span></div>
+    <div class="font-sample default">Default (Arial): <span class="wanakana-text"></span></div>
+
+    <script>
+        const text = "nihongo wa muzukashii desu"; // Test input in romaji
+        const elements = document.querySelectorAll(".wanakana-text");
+
+        elements.forEach(el => {
+            el.textContent = wanakana.toHiragana(text);
+        });
+    </script>
+
+</body>
+</html>
