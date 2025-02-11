@@ -5,17 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Japanese Counter Game</title>
     <link rel="stylesheet" href="style.css">
-    <script type="module" src="javascript.js"></script>
-    <script src="https://unpkg.com/wanakana"></script>
+    <script src="javascript.js"></script>
+    <script src="wanakana.min.js"></script>
 </head>
 <body>
-    <div class="container">
+    <div class="top-bar blank">
+        <!-- for later stuff -->
+    </div>
+
+    <div class="content">
         <h1>Japanese Counter Game</h1>
-        <p id="question">Loading...</p>
-        <input type="text" id="answer" placeholder="Type your answer" autofocus>
-        <button id="submit">Submit</button>
-        <p id="feedback"></p>
-        <p>Streak: <span id="streak">0</span></p>
+
+        <div class="card">
+            <div class="section english-text">
+                <p id="question">Loading...</p>
+            </div>
+            <div class="section japanese-input">
+                <input type="text" id="EngToJa" placeholder="日本語入力">
+            </div>
+            <div class="section blank">
+                <p id="feedback"></p>
+            </div>
+        </div>
     </div>
 </body>
 </html>

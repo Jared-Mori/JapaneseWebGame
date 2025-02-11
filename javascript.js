@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     let data = await loadData("data.txt");
 
     // Get the answer input field
-    const answerInput = document.getElementById("answer");
+    const answerInput = document.getElementById("EngToJa");
 
     // Enable real-time romaji-to-hiragana conversion
     if (wanakana && wanakana.bind) {

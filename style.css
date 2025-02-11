@@ -1,61 +1,92 @@
-/* General Page Styling */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=M+PLUS+Rounded+1c:wght@400;700&display=swap');
+
 body {
-    font-family: 'Roboto', sans-serif; /* Default English font */
-    background: #e0e0e0; /* Light grey background */
-    color: #333;
+    font-family: 'Roboto', sans-serif;
+    background-color: #D6D7D9;
+    margin: 0;
+    padding: 0; /* Ensure no padding */
     text-align: center;
-    padding: 20px;
 }
 
-/* Japanese Font */
-.japanese-text {
-    font-family: 'Hiragino Kaku Gothic Pro', Meiryo, 'ヒラギノ角ゴ Pro W3', メイリオ, Osaka, 'MS PGothic', 'ＭＳ Ｐゴシック', sans-serif;
+.content {
+    padding-top: 70px; /* Add padding to avoid overlap with the top bar */
 }
 
-/* Heading Styling */
-h1, h2 {
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #444;
+/* Header Styling */
+h1 {
+    font-family: 'M PLUS Rounded 1c', sans-serif; /* Bubbly, rounded font */
+    color: #686667; /* Dark grey */
+    font-size: 28px;
 }
 
-/* Card Style */
+input[type="text"] {
+    border: none;
+    outline: none;
+}
+
+/* Card Styling */
 .card {
     display: flex;
     flex-direction: column;
     width: 80%;
     max-width: 600px;
     margin: 20px auto;
-    border: 1px solid #ccc;
+    border: none;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Section Style */
+/* Equal Sizing for Sections */
 .section {
-    flex: 1;
+    flex: 1; /* Ensures all three sections are the same height */
     padding: 20px;
     box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+/* Section Colors */
 .english-text {
-    background-color: #ffcccc;
+    background-color: #EEEEEE;
 }
 
 .japanese-input {
-    background-color: #ccffcc;
+    background-color: #BBE4E6;
 }
 
 .blank {
-    background-color: #ccccff;
+    background-color: #0B1023;
 }
 
-/* Code Block Styling */
-.code-box {
-    background: #222;
-    color: #b0e3ff; /* Cyan text for code */
-    font-family: 'Courier New', monospace;
+.top-bar {
+    padding: 0;
+    height: 50px;
+    width: 100%;
+    text-align: center;
+    background-color: #0B1023; /* Adjust this color to match the blank section */
+    position: fixed; /* Ensure it stays at the top */
+    top: 0;
+    left: 0;
+}
+
+/* Rounded Font & Light Grey Text for English Text */
+.english-text p {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-size: 24px;
+    color: #787878; /* Lighter grey */
+    margin: 0;
+}
+
+/* Japanese Input Styling */
+.japanese-input input {
+    width: 100%;
+    font-size: 18px;
     padding: 10px;
-    border-radius: 5px;
-    margin-top: 10px;
+    text-align: center;
+    font-family: 'Hiragino Kaku Gothic Pro', Meiryo, sans-serif;
+    background: transparent; /* Makes it blend into the section */
+}
+
+.japanese-input input:focus {
+    color: #686667; /* Dark grey */
 }
