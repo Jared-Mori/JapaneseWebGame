@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", async function () {
     let data = await loadData("data.txt");
+    console.log("Data:", data);
     let questions = splitCounters(data);
 
     // Print the split data to the console for verification
