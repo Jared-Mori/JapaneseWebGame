@@ -4,23 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wanakana Font Test</title>
-    
-    <!-- Load Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Roboto:wght@400;700&family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/wanakana"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <h1>Font Test Title</h1>
 
-    <h1>Wanakana Font Test</h1>
+    <div class="box">
+        <p class="japanese-text">にほんごのテスト</p>
+        <p>nihongonotesuto</p>
+        <div class="code-box">wanakana.toRomaji(str);</div>
+    </div>
 
-    <div class="font-sample noto-sans">日本語のようなこととか</div>
-    <textarea id="kana-to-romaji" 
-              placeholder="Kana string to romaji" 
-              lang="ja" 
-              spellcheck="false">
-        にほんごのテスト
-    </textarea>
+    <div class="box">
+        <p class="japanese-text">アメリカ</p>
+        <p class="japanese-text">あめりか</p>
+        <div class="code-box">wanakana.toHiragana(str);</div>
+    </div>
 
 </body>
 </html>
