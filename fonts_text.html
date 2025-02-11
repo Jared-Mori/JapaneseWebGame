@@ -7,65 +7,17 @@
     
     <!-- Load Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Roboto:wght@400;700&family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
-        }
-        .font-sample {
-            margin: 20px 0;
-            padding: 10px;
-            font-size: 24px;
-            border-bottom: 2px solid #ccc;
-        }
-        .noto-sans { font-family: 'Noto Sans JP', sans-serif; }
-        .roboto { font-family: 'Roboto', sans-serif; }
-        .rounded { font-family: 'M PLUS Rounded 1c', sans-serif; }
-        .default { font-family: Arial, sans-serif; }
-    </style>
+    <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/wanakana"></script>
-    <textarea tabindex="-1" 
-              style="position: absolute; 
-                     inset: -999px auto auto 0px; 
-                     border: 0px; 
-                     padding: 0px; 
-                     box-sizing: content-box; 
-                     overflow-wrap: break-word; 
-                     overflow: hidden; 
-                     transition: none; 
-                     height: 0px !important; 
-                     min-height: 0px !important; 
-                     font-family: 'Hiragino Kaku Gothic Pro', Meiryo, 'ヒラギノ角ゴ Pro W3', メイリオ, Osaka, 'MS PGothic', 'ＭＳ Ｐゴシック', sans-serif; 
-                     font-size: 12px; 
-                     font-weight: 700; 
-                     font-style: normal; 
-                     letter-spacing: 0px; 
-                     text-transform: none; 
-                     word-spacing: 0px; 
-                     text-indent: 0px; 
-                     line-height: normal; 
-                     width: 302px;" 
-              class="autosizejs">
-    </textarea>
-
 </head>
 <body>
 
     <h1>Wanakana Font Test</h1>
 
-    <div class="font-sample noto-sans">Noto Sans JP: <span class="wanakana-text"></span></div>
-    <div class="font-sample roboto">Roboto: <span class="wanakana-text"></span></div>
-    <div class="font-sample rounded">M PLUS Rounded: <span class="wanakana-text"></span></div>
-    <div class="font-sample default">Default (Arial): <span class="wanakana-text"></span></div>
+    <div class="font-sample noto-sans">日本語のようなこととか</div>
     <textarea id="kana-to-romaji" 
               placeholder="Kana string to romaji" 
               lang="ja" 
-              style="overflow: hidden; 
-                     overflow-wrap: break-word; 
-                     resize: none; 
-                     height: 66px;" 
               spellcheck="false">
         にほんごのテスト
     </textarea>

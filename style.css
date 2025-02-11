@@ -3,7 +3,7 @@ body {
     text-align: center;
     background-color: #f4f4f4;
     margin: 0;
-    padding: 0;
+    padding: 20px;
 }
 
 .container {
@@ -53,4 +53,32 @@ button:hover {
 #streak {
     font-weight: bold;
     color: green;
+}
+
+.font-sample {
+    margin: 20px 0;
+    padding: 10px;
+    font-size: 24px;
+    border-bottom: 2px solid #ccc;
+}
+
+.noto-sans {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+#kana-to-romaji {
+    overflow: hidden;
+    overflow-wrap: break-word;
+    resize: none;
+    height: 66px;
+    width: 100%;
+    font-family: 'Hiragino Kaku Gothic Pro', Meiryo, 'ヒラギノ角ゴ Pro W3', メイリオ, Osaka, 'MS PGothic', 'ＭＳ Ｐゴシック', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 0px;
+    text-transform: none;
+    word-spacing: 0px;
+    text-indent: 0px;
+    line-height: normal;
 }
