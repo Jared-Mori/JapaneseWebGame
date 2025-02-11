@@ -34,25 +34,36 @@ body {
     text-align: center;
     font-family: 'Hiragino Kaku Gothic Pro', Meiryo, sans-serif;
     color: #FFFFFF;
-    line-height: 40px;
+    line-height: 43px; /* Vertically center the text */
 }
 
 .circle:hover {
     transform: scale(1.2);
 }
 
+.end-circle {
+    z-index: -3;
+}
+
 .dropdown {
     width: 100%;
     position: absolute;
-    background-color: #0B1023;
     top: 0px;
+    background-color: #0B1023;
+    line-height: 7px;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.8s ease-out, opacity 0.7s ease-out, visibility 0.7s;
     border-radius: 20px;
     opacity: 0;
     visibility: hidden;
-    z-index: 1; /* Ensure the dropdown is above the circle */
+    z-index: 1; /* Ensure the dropdown is below the circle */
+}
+
+.circle:hover .dropdown {
+    max-height: 800px; /* Adjust this value based on the content */
+    opacity: 1;
+    visibility: visible;
 }
 
 /* Header Styling */

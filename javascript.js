@@ -10,21 +10,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     } else {
         console.error("Wanakana failed to load.");
     }
-
-    const circle = document.querySelector('.circle');
-    const dropdown = document.querySelector('.dropdown');
-
-    circle.addEventListener('click', function() {
-        if (dropdown.style.maxHeight === '0px' || dropdown.style.maxHeight === '') {
-            dropdown.style.maxHeight = '800px'; // Adjust this value as needed
-            dropdown.style.opacity = '1';
-            dropdown.style.visibility = 'visible';
-        } else {
-            dropdown.style.maxHeight = '0px';
-            dropdown.style.opacity = '0';
-            dropdown.style.visibility = 'hidden';
-        }
-    });
 });
 
 // Function to load and parse the data file
