@@ -26,6 +26,29 @@
         .default { font-family: Arial, sans-serif; }
     </style>
     <script src="https://unpkg.com/wanakana"></script>
+    <textarea tabindex="-1" 
+              style="position: absolute; 
+                     inset: -999px auto auto 0px; 
+                     border: 0px; 
+                     padding: 0px; 
+                     box-sizing: content-box; 
+                     overflow-wrap: break-word; 
+                     overflow: hidden; 
+                     transition: none; 
+                     height: 0px !important; 
+                     min-height: 0px !important; 
+                     font-family: 'Hiragino Kaku Gothic Pro', Meiryo, 'ヒラギノ角ゴ Pro W3', メイリオ, Osaka, 'MS PGothic', 'ＭＳ Ｐゴシック', sans-serif; 
+                     font-size: 12px; 
+                     font-weight: 700; 
+                     font-style: normal; 
+                     letter-spacing: 0px; 
+                     text-transform: none; 
+                     word-spacing: 0px; 
+                     text-indent: 0px; 
+                     line-height: normal; 
+                     width: 302px;" 
+              class="autosizejs">
+    </textarea>
 
 </head>
 <body>
@@ -36,21 +59,16 @@
     <div class="font-sample roboto">Roboto: <span class="wanakana-text"></span></div>
     <div class="font-sample rounded">M PLUS Rounded: <span class="wanakana-text"></span></div>
     <div class="font-sample default">Default (Arial): <span class="wanakana-text"></span></div>
-    <textarea id="kana-to-romaji" placeholder="Kana string to romaji" lang="ja" 
-    style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 66px;" 
-    spellcheck="false">にほんごのテスト</textarea>
-
-    <script>
-        const text = "nihongo wa muzukashii desu"; // Test input in romaji
-        const elements = document.querySelectorAll("wanakana-text");
-
-        elements.forEach(el => {
-            el.textContent = wanakana.toHiragana(text);
-        });
-
-        wanakana.bind(document.getElementById("kana-to-romaji"));
-        wanakana.toKana(text);
-    </script>
+    <textarea id="kana-to-romaji" 
+              placeholder="Kana string to romaji" 
+              lang="ja" 
+              style="overflow: hidden; 
+                     overflow-wrap: break-word; 
+                     resize: none; 
+                     height: 66px;" 
+              spellcheck="false">
+        にほんごのテスト
+    </textarea>
 
 </body>
 </html>
