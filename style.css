@@ -12,11 +12,55 @@ body {
     padding-top: 70px; /* Add padding to avoid overlap with the top bar */
 }
 
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the header content */
+    gap: 10px;
+    position: relative; /* Ensure the dropdown is positioned relative to the header */
+}
+
+.circle {
+    width: 40px;
+    height: 40px;
+    background-color: #0B1023;
+    border-radius: 50%;
+    transition: transform 0.3s;
+    cursor: pointer;
+    position: relative; /* Ensure the dropdown is positioned relative to the circle */
+    left: 20px;
+    z-index: 2; /* Ensure the circle is above the dropdown */
+    font-size: 18px;
+    text-align: center;
+    font-family: 'Hiragino Kaku Gothic Pro', Meiryo, sans-serif;
+    color: #FFFFFF;
+    line-height: 40px;
+}
+
+.circle:hover {
+    transform: scale(1.2);
+}
+
+.dropdown {
+    width: 100%;
+    position: absolute;
+    background-color: #0B1023;
+    top: 0px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.8s ease-out, opacity 0.7s ease-out, visibility 0.7s;
+    border-radius: 20px;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1; /* Ensure the dropdown is above the circle */
+}
+
 /* Header Styling */
 h1 {
     font-family: 'M PLUS Rounded 1c', sans-serif; /* Bubbly, rounded font */
     color: #686667; /* Dark grey */
     font-size: 28px;
+    margin: 0 auto; /* Center the title */
 }
 
 input[type="text"] {

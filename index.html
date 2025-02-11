@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Japanese Counter Game</title>
     <link rel="stylesheet" href="style.css">
-    <script src="javascript.js"></script>
-    <script src="wanakana.min.js"></script>
+    <script src="javascript.js" defer></script>
+    <script src="wanakana.min.js" defer></script>
 </head>
 <body>
     <div class="top-bar blank">
@@ -14,7 +14,21 @@
     </div>
 
     <div class="content">
-        <h1>Japanese Counter Game</h1>
+        <div class="header-container">
+            <div class="circle" id="circle">
+                回
+                <div class="dropdown" id="dropdown">
+                    <p style="color: white;">匹</p>
+                    <p style="color: white;">台</p>
+                    <p style="color: white;">間</p>
+                    <p style="color: white;">ヶ月</p>
+                    <p style="color: white;">枚</p>
+                    <div class="circle" id="end-circle"></div>
+                </div>
+            </div>
+            <h1>Japanese Counter Game</h1>
+
+        </div>
 
         <div class="card">
             <div class="section english-text">
