@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", async function () {
     let data = await loadData("data.txt");
+    let questions = splitCounters(data);
 
     // Get the answer input field
     const answerInput = document.getElementById("EngToJa");
@@ -10,6 +11,14 @@ document.addEventListener("DOMContentLoaded", async function () {
     } else {
         console.error("Wanakana failed to load.");
     }
+
+    // Add event listener to the button
+    const button = document.getElementById("loadQuestionButton");
+    button.addEventListener("click", function () {
+        const questionParagraph = document.getElementById("question");
+        const question = loadQuestion(questions);
+        questionParagraph.textContent = question.answer; // Update the paragraph content
+    });
 });
 
 // Function to load and parse the data file
@@ -30,12 +39,13 @@ async function loadData(file) {
 // Function to parse the text data into a usable format
 function parseData(text) {
     const lines = text.split("\n").map(line => line.trim()).filter(line => line);
+
     return lines.map(line => {
         const parts = line.split(" - ");
         if (parts.length === 3) {
             return {
-                numeral: parts[0],
-                description: parts[1],
+                count: parts[0],
+                descriptions: parts[1].split(","),
                 answer: parts[2]
             };
         } else {
@@ -43,4 +53,26 @@ function parseData(text) {
             return null;
         }
     }).filter(item => item !== null);
+}
+
+function splitCounters(data) {
+    const counterMap = new Map();
+    const tempArray = [];
+
+    data.array.forEach(question => {
+        if(question.count === 0) {
+            counterMap.set(question.descriptions[0], tempArray);
+            tempArray = [];
+        } else {
+            tempArray.push(question);
+        }
+    });
+}
+
+function loadQuestion(counterMap) {
+    const keys = Array.from(counterMap.keys());
+    const randomKey = keys[Math.floor(Math.random() * keys.length)];
+    const questions = counterMap.get(randomKey);
+    const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
+    return randomQuestion;
 }
