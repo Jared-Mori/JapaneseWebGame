@@ -128,10 +128,19 @@ function checkAnswer(answer, question) {
     }
 }
 
-// Function to add a new paragraph to the dropdown
 function setDropdown(text) {
     const p = document.createElement('p');
     p.style.color = 'white';
     p.textContent = text;
+
+    // Add event listener to toggle color on click
+    p.addEventListener('click', function () {
+        if (p.style.color === 'white') {
+            p.style.color = 'gray'; // Toggle off color
+        } else {
+            p.style.color = 'white'; // Toggle on color
+        }
+    });
+
     dropdown.appendChild(p);
 }

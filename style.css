@@ -25,6 +25,7 @@ body {
     height: 40px;
     background-color: #0B1023;
     border-radius: 50%;
+    border: 1px solid #BBE4E6;
     transition: transform 0.3s;
     cursor: pointer;
     position: relative; /* Ensure the dropdown is positioned relative to the circle */
@@ -57,7 +58,7 @@ body {
     border-radius: 20px;
     opacity: 0;
     visibility: hidden;
-    z-index: 1; /* Ensure the dropdown is below the circle */
+    z-index: -1; /* Ensure the dropdown is below the circle */
 }
 
 .circle:hover .dropdown {
