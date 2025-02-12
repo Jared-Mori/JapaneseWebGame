@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 }, 500);
             } else {
                 if(checkAnswer(answerInput.value, currentQuestion)) {
-                    currentQuestion = loadAndDisplayQuestion(questions, selectedFilters);
+                    currentQuestion = loadAndDisplayQuestion(questionSet, selectedFilters);
                     answerInput.value = "";
                 } else {
                     answerInput.classList.add("shake");
