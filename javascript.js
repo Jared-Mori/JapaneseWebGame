@@ -1,13 +1,12 @@
 document.addEventListener("DOMContentLoaded", async function () {
     let data = await loadData("data.txt");
-    console.log("Data:", data);
-    let questions = splitCounters(data);
-
-    // Print the split data to the console for verification
-    console.log("Split Questions Data:", questions);
-    const keys = Array.from(questions.keys());
+    let questionSet = splitCounters(data);
+    let selectedFilters = new Map();
+    
+    const keys = Array.from(questionSet.keys());
     keys.forEach(key => {
-        setDropdown(questions.get(key)[0]);
+        selectedFilters.set(key, true);
+        setDropdown(key, questionSet, selectedFilters);
     });
 
     // Get the answer input field
@@ -21,7 +20,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     // Load a question when the page opens
-    let currentQuestion = loadAndDisplayQuestion(questions);
+    let currentQuestion = loadAndDisplayQuestion(questionSet, selectedFilters);
 
     // Add event listener to the input field for 'Enter' key
     answerInput.addEventListener("keydown", function (event) {
@@ -33,7 +32,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 }, 500);
             } else {
                 if(checkAnswer(answerInput.value, currentQuestion)) {
-                    currentQuestion = loadAndDisplayQuestion(questions);
+                    currentQuestion = loadAndDisplayQuestion(questions, selectedFilters);
                     answerInput.value = "";
                 } else {
                     answerInput.classList.add("shake");
@@ -96,24 +95,31 @@ function splitCounters(data) {
     return counterMap;
 }
 
-function loadQuestion(counterMap) {
-    const keys = Array.from(counterMap.keys());
+function loadAndDisplayQuestion(counterMap, filters) {
+    const questionParagraph = document.getElementById("question");
+    const question = loadQuestion(counterMap, filters);
+    questionParagraph.textContent = formatQuestion(question); // Update the paragraph content
+    return question;
+}
+
+function loadQuestion(counterMap, filters) {
+    console.log("Filters:", filters);
+    const keys = [];
+    filters.forEach((key, value) => {
+        console.log("Key:", key);
+        if (key) {
+            keys.push(value);
+        }
+    });
+    console.log("Keys:", keys);
     const randomKey = keys[Math.floor(Math.random() * keys.length)];
     const questions = counterMap.get(randomKey);
     const randomQuestion = questions[1][Math.floor(Math.random() * questions[1].length)];
-    console.log("Random Question:", randomQuestion);
     return randomQuestion;
 }
 
 function formatQuestion(question) {
     return `${question.count} ${question.descriptions[Math.floor(Math.random() * question.descriptions.length)]}`;
-}
-
-function loadAndDisplayQuestion(questions) {
-    const questionParagraph = document.getElementById("question");
-    const question = loadQuestion(questions);
-    questionParagraph.textContent = formatQuestion(question); // Update the paragraph content
-    return question;
 }
 
 function checkAnswer(answer, question) {
@@ -128,18 +134,22 @@ function checkAnswer(answer, question) {
     }
 }
 
-function setDropdown(text) {
+function setDropdown(key, questions, filters) {
     const p = document.createElement('p');
     p.style.color = 'white';
-    p.textContent = text;
+    p.textContent = questions.get(key)[0];
+    p.isActive = true;
 
-    // Add event listener to toggle color on click
+    // Add event listener to toggle color on click and update filters
     p.addEventListener('click', function () {
         if (p.style.color === 'white') {
             p.style.color = 'gray'; // Toggle off color
+            filters.set(key, false);
         } else {
             p.style.color = 'white'; // Toggle on color
+            filters.set(key, true);
         }
+        loadAndDisplayQuestion(questions, filters); // Reload questions based on filters
     });
 
     dropdown.appendChild(p);
