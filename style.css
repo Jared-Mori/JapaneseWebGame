@@ -25,7 +25,7 @@ body {
     height: 40px;
     background-color: #0B1023;
     border-radius: 50%;
-    border: 1px solid #BBE4E6;
+    box-shadow: -50% 0 0 1px #BBE4E6; /* Add white outline using box-shadow */
     transition: transform 0.3s;
     cursor: pointer;
     position: relative; /* Ensure the dropdown is positioned relative to the circle */
