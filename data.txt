@@ -18,7 +18,7 @@
 18 - cat,dog,rabbit - じゅうはっぴき
 19 - cat,dog,rabbit - じゅうきゅうひき
 20 - cat,dog,rabbit - にじゅっぴき
-0 - Small Animals - 匹（ひき）
+0 - Small Animals - 匹
 1 - books,notebooks - いっさつ
 2 - books,notebooks - にさつ
 3 - books,notebooks - さんさつ
@@ -39,7 +39,7 @@
 18 - books,notebooks - じゅうはっさつ
 19 - books,notebooks - じゅうきゅうさつ
 20 - books,notebooks - にじゅっさつ
-0 - Books - 冊（さつ）
+0 - Books - 冊
 1 - cars,bicycles - いちだい
 2 - cars,bicycles - にだい
 3 - cars,bicycles - さんだい
@@ -60,4 +60,4 @@
 18 - cars,bicycles - じゅうはちだい
 19 - cars,bicycles - じゅうきゅうだい
 20 - cars,bicycles - にじゅうだい
-0 - Vehicles - 台（だい）
+0 - Vehicles - 台

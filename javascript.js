@@ -5,6 +5,10 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     // Print the split data to the console for verification
     console.log("Split Questions Data:", questions);
+    const keys = Array.from(questions.keys());
+    keys.forEach(key => {
+        setDropdown(questions.get(key)[0]);
+    });
 
     // Get the answer input field
     const answerInput = document.getElementById("EngToJa");
@@ -16,12 +20,29 @@ document.addEventListener("DOMContentLoaded", async function () {
         console.error("Wanakana failed to load.");
     }
 
-    // Add event listener to the button
-    const button = document.getElementById("loadQuestionButton");
-    button.addEventListener("click", function () {
-        const questionParagraph = document.getElementById("question");
-        const question = loadQuestion(questions);
-        questionParagraph.textContent = question.answer; // Update the paragraph content
+    // Load a question when the page opens
+    let currentQuestion = loadAndDisplayQuestion(questions);
+
+    // Add event listener to the input field for 'Enter' key
+    answerInput.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            if (answerInput.value === "") {
+                answerInput.classList.add("shake");
+                setTimeout(() => {
+                    answerInput.classList.remove("shake");
+                }, 500);
+            } else {
+                if(checkAnswer(answerInput.value, currentQuestion)) {
+                    currentQuestion = loadAndDisplayQuestion(questions);
+                    answerInput.value = "";
+                } else {
+                    answerInput.classList.add("shake");
+                    setTimeout(() => {
+                        answerInput.classList.remove("shake");
+                    }, 500);
+                }
+            }
+        }
     });
 });
 
@@ -65,7 +86,7 @@ function splitCounters(data) {
 
     data.forEach(question => {
         if (question.count === 0) {
-            counterMap.set(question.descriptions[0], tempArray);
+            counterMap.set(question.descriptions[0], [question.answer, tempArray]);
             tempArray = [];
         } else {
             tempArray.push(question);
@@ -79,6 +100,38 @@ function loadQuestion(counterMap) {
     const keys = Array.from(counterMap.keys());
     const randomKey = keys[Math.floor(Math.random() * keys.length)];
     const questions = counterMap.get(randomKey);
-    const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
+    const randomQuestion = questions[1][Math.floor(Math.random() * questions[1].length)];
+    console.log("Random Question:", randomQuestion);
     return randomQuestion;
+}
+
+function formatQuestion(question) {
+    return `${question.count} ${question.descriptions[Math.floor(Math.random() * question.descriptions.length)]}`;
+}
+
+function loadAndDisplayQuestion(questions) {
+    const questionParagraph = document.getElementById("question");
+    const question = loadQuestion(questions);
+    questionParagraph.textContent = formatQuestion(question); // Update the paragraph content
+    return question;
+}
+
+function checkAnswer(answer, question) {
+    console.log("Checking answer:", answer);
+    console.log("Checking against:", question.answer);
+    if (wanakana.toKana(answer) === question.answer) {
+        console.log("Correct!");
+        return true;
+    } else {
+        console.log("Incorrect!");
+        return false;
+    }
+}
+
+// Function to add a new paragraph to the dropdown
+function setDropdown(text) {
+    const p = document.createElement('p');
+    p.style.color = 'white';
+    p.textContent = text;
+    dropdown.appendChild(p);
 }
