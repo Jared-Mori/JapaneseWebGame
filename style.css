@@ -20,6 +20,11 @@ body {
     position: relative; /* Ensure the dropdown is positioned relative to the header */
 }
 
+.right-aligned {
+    position: absolute;
+    right: 20px;
+}
+
 .circle {
     width: 40px;
     height: 40px;
