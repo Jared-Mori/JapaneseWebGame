@@ -2,6 +2,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     let data = await loadData("data.txt");
     let questionSet = splitCounters(data);
     let selectedFilters = new Map();
+    let Streak = 0;
+
+    const scoreCounter = document.getElementById("score");
     
     const keys = Array.from(questionSet.keys());
     keys.forEach(key => {
@@ -34,10 +37,14 @@ document.addEventListener("DOMContentLoaded", async function () {
                 if(checkAnswer(answerInput.value, currentQuestion)) {
                     currentQuestion = loadAndDisplayQuestion(questionSet, selectedFilters);
                     answerInput.value = "";
+                    Streak++;
+                    scoreCounter.textContent = Streak;
                 } else {
                     answerInput.classList.add("shake");
                     setTimeout(() => {
                         answerInput.classList.remove("shake");
+                        Streak = 0;
+                        scoreCounter.textContent = Streak;
                     }, 500);
                 }
             }
