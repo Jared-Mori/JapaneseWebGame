@@ -38,13 +38,13 @@ document.addEventListener("DOMContentLoaded", async function () {
                     currentQuestion = loadAndDisplayQuestion(questionSet, selectedFilters);
                     answerInput.value = "";
                     Streak++;
-                    scoreCounter.textContent = "Score: ", Streak;
+                    scoreCounter.textContent = "Score: " + Streak;
                 } else {
                     answerInput.classList.add("shake");
                     setTimeout(() => {
                         answerInput.classList.remove("shake");
                         Streak = 0;
-                        scoreCounter.textContent = "Score: ", Streak;
+                        scoreCounter.textContent = "Score: " + Streak;
                     }, 500);
                 }
             }
